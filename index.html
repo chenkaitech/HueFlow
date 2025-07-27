@@ -3,67 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MoodFlow · 情绪光谱</title>
-<meta name="description" content="MoodFlow · Visualize your emotional journey. 情绪光谱 · 让情绪流动可视。">
+<title>HueView · 情绪光谱</title>
+<meta name="description" content="HueView · Visualize your emotional journey. 情绪光谱 · 让情绪流动可视。">
 <link rel="icon" href="favicon.ico">
 <style>
 :root{
-  --bg:#16171E;
-  --surface:#1E1F27;
-  --text:#E8EAF4;
-  --text2:#B4B8C9;
-  --blue:#7DA6FF;
-  --joy:#FFD54F;
-  --calm:#4DA8FF;
-  --anx:#FF7043;
-  --sad:#7E57C2;
-  --ener:#2ECC71;
+  --bg:#16171E; --surface:#1E1F27; --text:#E8EAF4; --text2:#B4B8C9; --blue:#7DA6FF;
+  --joy:#FFD54F; --calm:#4DA8FF; --anx:#FF7043; --sad:#7E57C2; --ener:#2ECC71;
 }
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, Noto Sans, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;}
+*{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);
+font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Helvetica, Arial, Noto Sans, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;}
 a{color:var(--blue);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:40px 24px}
 nav{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700}
 .brand img.icon{width:40px;height:40px;border-radius:12px}
 .lang-switch{display:flex;gap:8px;background:var(--surface);border-radius:12px;padding:6px}
-.lang-switch button{
-  all:unset;cursor:pointer;padding:6px 14px;border-radius:10px;color:var(--text2);font-weight:600}
+.lang-switch button{all:unset;cursor:pointer;padding:6px 14px;border-radius:10px;color:var(--text2);font-weight:600}
 .lang-switch button.active{background:var(--blue);color:#0B1220}
 .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;align-items:center;margin-top:40px}
 .hero h1{font-size:40px;line-height:1.1;margin:0 0 16px}
 .hero p.lead{color:var(--text2);font-size:18px;margin:0 0 24px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.button{
-  display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#0B1220;font-weight:700;
+.button{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#0B1220;font-weight:700;
   padding:14px 22px;border-radius:14px;box-shadow:0 10px 30px rgba(125,166,255,.25);}
 .button.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.15)}
-.card{
-  background:var(--surface);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25);
-}
+.card{background:var(--surface);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25);}
 .section{margin-top:80px}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
 .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
 .tag{display:inline-block;padding:6px 10px;border-radius:8px;font-size:13px}
 .sample{width:100%;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.35);background:#0f1118;aspect-ratio:9/19.5;object-fit:cover}
 .footer{margin-top:80px;color:var(--text2);font-size:14px;border-top:1px solid rgba(255,255,255,.08);padding:32px 0}
-.hidden{display:none !important}
-.colorbar{height:10px;border-radius:999px;background:
-linear-gradient(90deg,var(--joy),var(--anx),var(--ener),var(--calm),var(--sad));}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;background:#0f1118;border:1px solid rgba(255,255,255,.08);color:var(--text2);font-size:14px}
+.colorbar{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--joy),var(--anx),var(--ener),var(--calm),var(--sad));}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .gallery img{width:100%;border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.35);background:#0f1118;aspect-ratio:9/19.5;object-fit:cover}
-@media (max-width:960px){
-  .hero{grid-template-columns:1fr}
-}
+@media (max-width:960px){ .hero{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
 <div class="container">
   <nav>
     <div class="brand">
-      <img class="icon" src="app_icon.png" alt="MoodFlow icon">
-      <span>MoodFlow · 情绪光谱</span>
+      <img class="icon" src="app_icon.png" alt="HueView icon">
+      <span>HueView · 情绪光谱</span>
     </div>
     <div class="lang-switch">
       <button id="btn-en" class="active">English</button>
@@ -77,12 +60,11 @@ linear-gradient(90deg,var(--joy),var(--anx),var(--ener),var(--calm),var(--sad));
       <p class="lead" data-en="Track mood type, intensity, and time in one elegant spectrum. See patterns, get insights, and build healthier habits."
          data-zh="在一个精致的光谱中同时记录情绪类型、强度与时间。发现模式，生成洞察，养成更健康的习惯。"></p>
       <div class="cta">
-        <a href="#" class="button" data-en="Get the App" data-zh="立即下载"></a>
+        <a href="#" class="button" data-en="Coming soon" data-zh="即将上架"></a>
         <a href="#features" class="button ghost" data-en="Learn more" data-zh="了解功能"></a>
       </div>
-      <div style="margin-top:24px" class="badge">
-        <span>•</span>
-        <span data-en="Private by design" data-zh="隐私优先"></span>
+      <div style="margin-top:24px;color:var(--text2)">
+        <span>• </span><span data-en="Private by design · iCloud sync optional" data-zh="隐私优先 · 可选 iCloud 同步"></span>
       </div>
       <div style="margin-top:16px" class="colorbar" aria-hidden="true"></div>
     </div>
@@ -109,8 +91,8 @@ linear-gradient(90deg,var(--joy),var(--anx),var(--ener),var(--calm),var(--sad));
       <div class="card">
         <div class="tag" style="background:rgba(46,204,113,.18);color:var(--ener)">Insights</div>
         <h3 style="margin:12px 0" data-en="Actionable insights" data-zh="可行动洞察"></h3>
-        <p class="text2" data-en="Auto summaries like “Anxiety ↑37% on Thursday afternoons” with filters and comparisons."
-           data-zh="自动摘要如「周四下午焦虑 ↑37%」，支持筛选与对比。"></p>
+        <p class="text2" data-en="Auto summaries like “Anxiety ↑37% on Thursday afternoons”, with filters and comparisons."
+           data-zh="自动摘要如「周四下午焦虑 ↑37%」，支持筛选与时间对比。"></p>
       </div>
     </div>
   </section>
@@ -131,19 +113,26 @@ linear-gradient(90deg,var(--joy),var(--anx),var(--ener),var(--calm),var(--sad));
     <div class="grid-2">
       <div class="card">
         <h2 data-en="Privacy" data-zh="隐私"></h2>
-        <p class="text2" data-en="Your data stays on your device."
-           data-zh="数据默认仅存储在本机。"></p>
+        <p class="text2" data-en="Your data stays on your device. iCloud sync is optional and end‑to‑end encrypted. No account required."
+           data-zh="数据默认仅存储在本机。iCloud 同步为可选，并采用端到端加密。无须注册账号。"></p>
+        <ul style="margin:12px 0 0 18px; color: var(--text2); line-height:1.7">
+          <li data-en="We do not request access to your contacts, location, photos, or microphone."
+              data-zh="我们不会请求访问您的联系人、位置信息、照片或麦克风。"></li>
+          <li data-en="We do not track your device identifiers or behavior data."
+              data-zh="我们不会追踪您的设备标识或行为数据。"></li>
+        </ul>
       </div>
       <div class="card">
         <h2 data-en="Support" data-zh="支持"></h2>
-        <p class="text2" data-en="Have questions or feedback? Email us anytime."
-           data-zh="如有问题或建议，欢迎邮件联系。"></p>
+        <p class="text2" data-en="Have questions or feedback? Email us or open an issue on GitHub."
+           data-zh="有问题或建议？欢迎发送邮件，或在 GitHub 提交 Issue。"></p>
+        <p><a href="mailto:support@example.com">support@example.com</a></p>
         <p>
-<a href="https://github.com/chenkaitech/MoodFlow" target="_blank" rel="noopener" 
-data-en="GitHub Repository" data-zh="GitHub 仓库"></a><br>
-<a href="https://github.com/chenkaitech/MoodFlow/issues" target="_blank" rel="noopener" 
-data-en="Report an issue on GitHub" data-zh="在 GitHub 提交问题"></a><br>
-<a href="mailto:support@example.com">freesysck@outlook.com</a></p>
+          <a href="https://github.com/chenkaitech/HueView" target="_blank" rel="noopener"
+             data-en="GitHub Repository" data-zh="GitHub 仓库"></a><br>
+          <a href="https://github.com/chenkaitech/HueView/issues" target="_blank" rel="noopener"
+             data-en="Report an issue on GitHub" data-zh="在 GitHub 提交问题"></a>
+        </p>
       </div>
     </div>
   </section>
@@ -151,9 +140,9 @@ data-en="Report an issue on GitHub" data-zh="在 GitHub 提交问题"></a><br>
   <footer class="footer">
     <div class="grid-2">
       <div>
-        <strong>MoodFlow · 情绪光谱</strong><br>
-        <span data-en="© 2025 CXY Studio. All rights reserved."
-              data-zh="© 2025 CXY Studio。保留所有权利。"></span>
+        <strong>HueView · 情绪光谱</strong><br>
+        <span data-en="© 2025 Your Studio. All rights reserved."
+              data-zh="© 2025 你的工作室。保留所有权利。"></span>
       </div>
       <div style="text-align:right">
         <a href="#privacy" data-en="Privacy Policy" data-zh="隐私政策"></a> ·
@@ -171,11 +160,11 @@ function setLang(lang){
   });
   document.getElementById("btn-en").classList.toggle("active", lang==="en");
   document.getElementById("btn-zh").classList.toggle("active", lang==="zh");
-  localStorage.setItem("moodflow-lang", lang);
+  localStorage.setItem("hueview-lang", lang);
 }
 document.getElementById("btn-en").onclick=()=>setLang("en");
 document.getElementById("btn-zh").onclick=()=>setLang("zh");
-const saved = localStorage.getItem("moodflow-lang") || (navigator.language.startsWith("zh")?"zh":"en");
+const saved = localStorage.getItem("hueview-lang") || (navigator.language.startsWith("zh")?"zh":"en");
 setLang(saved);
 </script>
 </body>
